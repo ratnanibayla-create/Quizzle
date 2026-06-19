@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+  <title>Quizzle - Home</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #6a5acd, #00bcd4);
+      color: #333;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #2d2a55;
+      color: white;
+      padding: 30px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 45px;
+    }
+
+    header p {
+      font-size: 20px;
+    }
+
+    .home-container {
+      background-color: white;
+      width: 75%;
+      max-width: 700px;
+      margin: auto;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .home-container h2 {
+      color: #4b3fdb;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .home-container p {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .quiz-btn {
+      background-color: #ffca28;
+      color: #222;
+      border: none;
+      padding: 20px 40px;
+      font-size: 22px;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .quiz-btn:hover {
+      background-color: #ff9800;
+      color: white;
+      transform: scale(1.05);
+    }
+
+    footer {
+      background-color: #2d2a55;
+      color: white;
+      padding: 15px;
+      margin-top: auto;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>🎯 Quizzle</h1>
+    <p>Test Your Knowledge with Fun Quizzes</p>
+  </header>
+
+  <div class="home-container">
+    <h2>Welcome to Quizzle!</h2>
+    <p>Ready to challenge yourself? Choose a quiz below to get started and see how much you know.</p>
+    <a href="index.html" class="quiz-btn">General Knowledge Quiz</a>
+  </div>
+
+  <footer>
+    Quizzle - Making learning fun, one question at a time
+  </footer>
+
+</body>
+</html>

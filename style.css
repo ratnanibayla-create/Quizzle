@@ -1,0 +1,119 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #6a5acd, #00bcd4);
+  color: #333;
+  text-align: center;
+}
+
+/* Header */
+header {
+  background-color: #2d2a55;
+  color: white;
+  padding: 30px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 45px;
+}
+
+header p {
+  font-size: 20px;
+}
+
+/* Main quiz box */
+.quiz-box {
+  background-color: white;
+  width: 75%;
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.quiz-box h2 {
+  color: #4b3fdb;
+}
+
+/* Each question card */
+.question {
+  background-color: #f2f2ff;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 15px;
+  text-align: left;
+}
+
+.question h2 {
+  color: #4b3fdb;
+  font-size: 24px;
+}
+
+/* Answer choices */
+.answer {
+  display: block;
+  background-color: #e0f7fa;
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.answer:hover {
+  background-color: #b2ebf2;
+  border: 2px solid #00acc1;
+}
+
+/* Radio buttons */
+input[type="radio"] {
+  margin-right: 10px;
+}
+
+/* Submit button */
+button {
+  background-color: #ffca28;
+  color: #222;
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #ff9800;
+  color: white;
+}
+
+/* Footer */
+footer {
+  background-color: #2d2a55;
+  color: white;
+  padding: 15px;
+  margin-top: 40px;
+}
+
+/* Makes it look nice on phones or small screens */
+@media screen and (max-width: 600px) {
+  .quiz-box {
+    width: 85%;
+    padding: 20px;
+  }
+
+  header h1 {
+    font-size: 35px;
+  }
+
+  .question h2 {
+    font-size: 20px;
+  }
+
+  .answer {
+    font-size: 16px;
+  }
+}

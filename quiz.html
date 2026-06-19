@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head><link rel="stylesheet" href="style.css">
+  <title>Fun Quiz Page</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #6a5acd, #00bcd4);
+      color: #333;
+      text-align: center;
+
+    header {
+      background-color: #2d2a55;
+      color: white;
+      padding: 30px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 45px;
+    }
+
+    header p {
+      font-size: 20px;
+    }
+
+    .quiz-box {
+      background-color: white;
+      width: 75%;
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .question {
+      background-color: #f2f2ff;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 15px;
+      text-align: left;
+    }
+
+    .question h2 {
+      color: #4b3fdb;
+      font-size: 24px;
+    }
+
+    .answer {
+      display: block;
+      background-color: #e0f7fa;
+      margin: 10px 0;
+      padding: 12px;
+      border-radius: 10px;
+      border: 2px solid transparent;
+      cursor: pointer;
+    }
+
+    .answer:hover {
+      background-color: #b2ebf2;
+      border: 2px solid #00acc1;
+    }
+
+    button {
+      background-color: #ffca28;
+      color: #222;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #ff9800;
+      color: white;
+    }
+
+    .results {
+      display: none;
+      background-color: #fff9c4;
+      border: 3px solid #ffca28;
+      border-radius: 15px;
+      padding: 30px;
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .results.show {
+      display: block;
+    }
+
+    .results h2 {
+      color: #4b3fdb;
+      font-size: 32px;
+      margin: 10px 0;
+    }
+
+    .score {
+      font-size: 48px;
+      color: #ff9800;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+
+    .results p {
+      font-size: 20px;
+      color: #333;
+    }
+
+    .back-link {
+      display: inline-block;
+      color: white;
+      text-decoration: none;
+      margin-right: 20px;
+      font-size: 16px;
+      padding: 8px 15px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    footer {
+      background-color: #2d2a55;
+      color: white;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="index.html" class="back-link">← Back to Home</a>
+    <h1>General Knowledge Quiz</h1>
+    <p>Test your knowledge and have fun</p>
+  </header>
+
+  <div class="quiz-box">
+    <h2>General Knowledge Quiz</h2>
+
+    <div class="question">
+      <h2>1. What planet do we live on?</h2>
+      <label class="answer">
+        <input type="radio" name="q1"> Mars
+      </label>
+      <label class="answer">
+        <input type="radio" name="q1"> Earth
+      </label>
+      <label class="answer">
+        <input type="radio" name="q1"> Jupiter
+      </label>
+    </div>
+
+    <div class="question">
+      <h2>2. How many days are in a week?</h2>
+      <label class="answer">
+        <input type="radio" name="q2"> 5
+      </label>
+      <label class="answer">
+        <input type="radio" name="q2"> 7
+      </label>
+      <label class="answer">
+        <input type="radio" name="q2"> 10
+      </label>
+    </div>
+
+    <div class="question">
+      <h2>3. What color do you get when you mix red and blue?</h2>
+      <label class="answer">
+        <input type="radio" name="q3"> Purple
+      </label>
+      <label class="answer">
+        <input type="radio" name="q3"> Green
+      </label>
+      <label class="answer">
+        <input type="radio" name="q3"> Yellow
+      </label>
+    </div>
+
+    <div class="question">
+      <h2>4. What is the largest country in the world?</h2>
+      <label class="answer">
+        <input type="radio" name="q4"> Russia
+      </label>
+      <label class="answer">
+        <input type="radio" name="q4"> United States of America
+      </label>
+      <label class="answer">
+        <input type="radio" name="q4"> China
+      </label>
+    </div>
+
+    <button onclick="gradeQuiz()">Submit Quiz</button>
+
+    <div class="results" id="results">
+      <h2>Your Results</h2>
+      <div class="score" id="score">0%</div>
+      <p id="feedback"></p>
+    </div>
+  </div>
+
+  <footer>
+    Made for a fun quiz webpage
+  </footer>
+
+  <script>
+    // Define correct answers
+    const correctAnswers = {
+      q1: "Earth",
+      q2: "7",
+      q3: "Purple",
+      q4: "Russia"
+    };
+
+    function gradeQuiz() {
+      let score = 0;
+      let answered = 0;
+      let totalQuestions = Object.keys(correctAnswers).length;
+
+      // Check each answer
+      for (let question in correctAnswers) {
+        const selectedAnswer = document.querySelector(`input[name="${question}"]:checked`);
+        
+        if (selectedAnswer) {
+          answered++;
+          // Get the text of the selected answer (next sibling after the input)
+          const answerText = selectedAnswer.parentElement.innerText.trim();
+          if (answerText === correctAnswers[question]) {
+            score++;
+          }
+        }
+      }
+
+      // Calculate percentage
+      let percentage = totalQuestions > 0 ? Math.round((score / totalQuestions) * 100) : 0;
+
+      // Display results
+      const resultsDiv = document.getElementById("results");
+      const scoreDiv = document.getElementById("score");
+      const feedbackDiv = document.getElementById("feedback");
+
+      scoreDiv.innerText = percentage + "%";
+      
+      // Create feedback message
+      if (answered < totalQuestions) {
+        feedbackDiv.innerText = `You answered ${answered}/${totalQuestions} questions. You got ${score} correct!\nPlease answer all questions before submitting.`;
+      } else {
+        feedbackDiv.innerText = `Excellent! You got ${score}/${totalQuestions} questions correct!`;
+      }
+
+      resultsDiv.classList.add("show");
+    }
+  </script>
+
+</body>
+</html>
