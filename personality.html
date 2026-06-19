@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+  <title>Quizzle - Personality Quizzes</title>
+  <style>
+    .results {
+      display: none;
+      background-color: #fff9c4;
+      border: 3px solid #ffca28;
+      border-radius: 15px;
+      padding: 30px;
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .results.show {
+      display: block;
+    }
+
+    .results h2 {
+      color: #4b3fdb;
+      font-size: 32px;
+      margin: 10px 0;
+    }
+
+    .personality-type {
+      font-size: 40px;
+      color: #ff9800;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+
+    .result-text {
+      font-size: 20px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="index.html" class="back-link">← Back to Home</a>
+    <h1>Personality Quizzes</h1>
+    <p>Find out what kind of thinker you are with a short personality quiz.</p>
+  </header>
+
+  <div class="quiz-box">
+    <h2>Choose the answer that fits you best</h2>
+
+    <div class="question">
+      <h2>1. You prefer to:</h2>
+      <label class="answer"><input type="radio" name="q1" value="A"> Spend time alone to recharge</label>
+      <label class="answer"><input type="radio" name="q1" value="B"> Be around friends and family</label>
+      <label class="answer"><input type="radio" name="q1" value="C"> Explore new places and ideas</label>
+    </div>
+
+    <div class="question">
+      <h2>2. When making decisions, you tend to:</h2>
+      <label class="answer"><input type="radio" name="q2" value="A"> Trust your feelings</label>
+      <label class="answer"><input type="radio" name="q2" value="B"> Follow what others recommend</label>
+      <label class="answer"><input type="radio" name="q2" value="C"> Look for logical solutions</label>
+    </div>
+
+    <div class="question">
+      <h2>3. You feel most energized by:</h2>
+      <label class="answer"><input type="radio" name="q3" value="A"> Quiet and calm environments</label>
+      <label class="answer"><input type="radio" name="q3" value="B"> Social activities and teamwork</label>
+      <label class="answer"><input type="radio" name="q3" value="C"> Creative challenges and experiments</label>
+    </div>
+
+    <div class="question">
+      <h2>4. Your ideal weekend includes:</h2>
+      <label class="answer"><input type="radio" name="q4" value="A"> Reading or relaxing at home</label>
+      <label class="answer"><input type="radio" name="q4" value="B"> Meeting new people or going out</label>
+      <label class="answer"><input type="radio" name="q4" value="C"> Trying something different and inspiring</label>
+    </div>
+
+    <div class="button-row">
+      <button onclick="showPersonality()">Reveal My Type</button>
+      <a href="quiz.html" class="back-link">Try General Quiz</a>
+    </div>
+
+    <div class="results" id="results">
+      <h2>Your Personality Type</h2>
+      <div class="personality-type" id="personalityType">Ready?</div>
+      <p class="result-text" id="resultText">Choose one answer from each question, then click the button to see your personality style.</p>
+    </div>
+  </div>
+
+  <footer>
+    Discover more than one way to learn with Quizzle.
+  </footer>
+
+  <script>
+    function showPersonality() {
+      const answers = [
+        document.querySelector('input[name="q1"]:checked'),
+        document.querySelector('input[name="q2"]:checked'),
+        document.querySelector('input[name="q3"]:checked'),
+        document.querySelector('input[name="q4"]:checked')
+      ];
+
+      if (answers.some(answer => !answer)) {
+        alert('Please answer every question to reveal your personality.');
+        return;
+      }
+
+      const counts = { A: 0, B: 0, C: 0 };
+      answers.forEach(answer => counts[answer.value]++);
+
+      let type = 'Balanced Explorer';
+      let description = 'You have a mix of strengths and enjoy different kinds of activities.';
+
+      if (counts.A >= 3) {
+        type = 'Quiet Thinker';
+        description = 'You prefer calm time, thoughtful choices, and deep reflection.';
+      } else if (counts.B >= 3) {
+        type = 'Social Energetic';
+        description = 'You thrive around people, collaboration, and shared experiences.';
+      } else if (counts.C >= 3) {
+        type = 'Creative Adventurer';
+        description = 'You love new ideas, fresh challenges, and imaginative planning.';
+      }
+
+      document.getElementById('personalityType').textContent = type;
+      document.getElementById('resultText').textContent = description;
+      document.getElementById('results').classList.add('show');
+    }
+  </script>
+</body>
+</html>
